@@ -173,12 +173,8 @@ function forwardTenSeconds(e) {
     forwardTen.classList.remove('anim');
 
   });
-  
-
-  
-
-
 }
+
 function backwardTenSeconds(e) {
   e.preventDefault();
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
@@ -190,7 +186,6 @@ function backwardTenSeconds(e) {
     backwardTen.classList.remove('anime');
 
   });
-
 }
 
 // Event Listeners
@@ -203,6 +198,22 @@ volumeRange.addEventListener('click', changeVolume);
 volumeIcon.addEventListener('click', toggleMute);
 speed.addEventListener('change', changeSpeed);
 fullscreenBtn.addEventListener('click', toggleFullscreen);
+
 forwardTen.addEventListener('click',forwardTenSeconds);
 backwardTen.addEventListener('click',backwardTenSeconds);
 
+// Add keypresses here
+// will allow for more keypress commands in the future
+window.addEventListener('keydown', function (event) {
+  var key = event.code;
+
+  // back arrow rewinds 10 seconds
+  if (key === "ArrowLeft") {
+    backwardTenSeconds(event);
+  }
+
+  // right arrow forward 10 seconds
+  if (key === "ArrowRight") {
+    forwardTenSeconds(event);
+  }
+});
