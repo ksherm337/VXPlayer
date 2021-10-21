@@ -188,6 +188,19 @@ function backwardTenSeconds(e) {
   });
 }
 
+// function for handling all keypresses
+function keypressHandle(e) {
+  var key = e.code;
+
+  // back arrow rewinds 10 seconds
+  if (key === "ArrowLeft") {
+    backwardTenSeconds(e);
+  }
+  else if (key === "ArrowRight") {
+    forwardTenSeconds(e);
+  }
+}
+
 // Event Listeners
 playBtn.addEventListener('click', togglePlay);
 video.addEventListener('click', togglePlay);
@@ -198,22 +211,6 @@ volumeRange.addEventListener('click', changeVolume);
 volumeIcon.addEventListener('click', toggleMute);
 speed.addEventListener('change', changeSpeed);
 fullscreenBtn.addEventListener('click', toggleFullscreen);
-
 forwardTen.addEventListener('click',forwardTenSeconds);
 backwardTen.addEventListener('click',backwardTenSeconds);
-
-// Add keypresses here
-// will allow for more keypress commands in the future
-window.addEventListener('keydown', function (event) {
-  var key = event.code;
-
-  // back arrow rewinds 10 seconds
-  if (key === "ArrowLeft") {
-    backwardTenSeconds(event);
-  }
-
-  // right arrow forward 10 seconds
-  if (key === "ArrowRight") {
-    forwardTenSeconds(event);
-  }
-});
+window.addEventListener('keydown', keypressHandle); // Even Listener for all keypresses
