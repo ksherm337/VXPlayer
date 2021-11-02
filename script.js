@@ -195,9 +195,12 @@ function keypressHandle(e) {
   // back arrow rewinds 10 seconds
   if (key === "ArrowLeft") {
     backwardTenSeconds(e);
-  }
-  else if (key === "ArrowRight") {
+  } else if (key === "ArrowRight") {
     forwardTenSeconds(e);
+  } else if (key === "KeyF") {
+    toggleFullscreen(e);
+  } else if (key === "Space") {
+    togglePlay(e);
   }
 }
 
